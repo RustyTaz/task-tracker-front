@@ -19,6 +19,11 @@ import { DashboardContentComponent } from './pages/dashboard-content/dashboard-c
 import { UserComponent } from './pages/user/user.component';
 import { TeamComponent } from './pages/team/team.component';
 import { TaskComponent } from './pages/task/task.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,10 +45,18 @@ import { TaskComponent } from './pages/task/task.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    
+    MatInputModule,
+    
+    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

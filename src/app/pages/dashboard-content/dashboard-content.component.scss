@@ -1,0 +1,53 @@
+.dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    
+    .task-list, .team-list {
+        margin-left: 10px;
+      width: 45%;
+    }
+  
+    .task-card, .team-card {
+        margin-left: 35px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  
+    .task-card {
+      .open { color: #f44336; } // красный
+      .in-progress { color: #d3be06; } // желтый
+      .completed { color: #4caf50; } // зеленый
+    }
+  }
+
+  select {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+

@@ -1,1 +1,33 @@
-<p>dashboard-content works!</p>
+<div class="dashboard-content">
+    <div class="task-list">
+    <h2>Задачи</h2>
+    <!-- <mat-form-field appearance="outline"> -->
+        <label for="priority-filter">Фильтр по приоритету</label>
+        <select id="priority-filter" [(ngModel)]="selectedPriority" (change)="filterTasks()">
+          <option value="ALL">Показать все</option>
+          <option value="HIGH">Высокий</option>
+          <option value="MEDIUM">Средний</option>
+          <option value="LOW">Низкий</option>
+        </select>
+        
+      <!-- </mat-form-field> -->
+      <mat-card *ngFor="let task of filteredTasks " class="task-card">
+        <p [ngStyle]="{'color': getPriorityColor(task.priority)}">{{ task.priority }} </p>
+        <span>--{{ task.title }}--</span>
+        <mat-icon [ngClass]="{'open': task.status === 'OPEN', 'in-progress': task.status === 'IN_PROGRESS', 'completed': task.status === 'COMPLETED'}">
+          {{ getStatusIcon(task.status) }}
+        </mat-icon>
+      </mat-card>
+    </div>
+  
+    <div class="team-list">
+        <h2>Команды</h2>
+        <label for="team-search">Поиск по командам</label>
+        <input id="team-search" type="text" (input)="searchTeams($event)" placeholder="Введите название команды">
+        <mat-card *ngFor="let team of filteredTeams" class="team-card">
+          <span>{{ team.name }}</span>
+        </mat-card>
+      </div>
+      
+  </div>
+  

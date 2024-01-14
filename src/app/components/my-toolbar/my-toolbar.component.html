@@ -1,11 +1,13 @@
   
   <div class="container">  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>apps</mat-icon>
-    </button>
-    <span>TASK TRACKER</span>
+    <div (click)="goToDashBoard()">    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>dashboard</mat-icon>
+      </button>
+      <span class="logo">TASK TRACKER</span></div>
+
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <span>{{user}}</span>
+    <button (click)="goToProfile()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>person_pin</mat-icon>
     </button>
     <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">

@@ -24,10 +24,12 @@ export class AuthService {
   }
 
   saveUser(user: any): void {
-
     this.user = user;
     console.log(this.user);
-  
-    //localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user.username));
+  }
+
+  getUser(){
+    return this.user;
   }
 }

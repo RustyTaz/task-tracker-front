@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-my-toolbar',
@@ -7,10 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-toolbar.component.scss']
 })
 export class MyToolbarComponent {
-  constructor(private router: Router){}
+  user!:string | null | undefined;
+
+  constructor(private router: Router,
+    private authService: AuthService){
+
+      
+    }
+
+    ngAfterViewInit(){
+      this.user = localStorage.getItem('user');
+      this.user = this.user?.slice(1, -1);
+      console.log(this.user);
+    }
+
+
+
+  goToProfile(){
+    this.router.navigate(['/dashboard/user']);
+  }
 
   logout(){
     localStorage.removeItem('authToken');
     this.router.navigate(['/login']);
+  }
+  goToDashBoard(){
+    this.router.navigate(['/dashboard']);
   }
 }
