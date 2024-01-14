@@ -1,0 +1,41 @@
+
+<div class="tool">  <mat-toolbar color="primary">
+  
+  <mat-icon>apps</mat-icon>
+
+<span>TASK TRACKER</span>
+<span class="example-spacer"></span>
+
+</mat-toolbar></div>
+<div class="container">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role" class="form-control">
+          <option value="ANALYST">ANALYST</option>
+          <option value="FRONT_DEVELOPER">FRONT_DEVELOPER</option>
+          <option value="BACK_DEVELOPER">BACK_DEVELOPER</option>
+          <option value="TESTER">TESTER</option>
+        </select>
+      </div>
+  
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Register</button>
+    <a routerLink="/login" >Already have an account? Login</a>
+  </form>
+ 
+  
+</div>

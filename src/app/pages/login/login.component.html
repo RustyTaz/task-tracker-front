@@ -1,0 +1,25 @@
+<div class="tool">  <mat-toolbar color="primary">
+  
+    <mat-icon>apps</mat-icon>
+ 
+  <span>TASK TRACKER</span>
+  <span class="example-spacer"></span>
+
+</mat-toolbar></div>
+<div class="container">
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a routerLink="/register" >Don't have an account? Register</a>
+  </form>
+
+</div>
