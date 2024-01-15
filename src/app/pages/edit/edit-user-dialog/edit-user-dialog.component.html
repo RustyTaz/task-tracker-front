@@ -1,0 +1,30 @@
+<!-- edit-user-dialog.component.html -->
+<h1 mat-dialog-title>Редактировать пользователя</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editForm">
+    <mat-form-field>
+      <mat-label>Имя пользователя</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Роль</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="FRONT_DEVELOPER">Front Developer</mat-option>
+        <mat-option value="BACK_DEVELOPER">Back Developer</mat-option>
+        <mat-option value="TESTER">Tester</mat-option>
+        <mat-option value="ANALYST">Analyst</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onSave()">Сохранить</button>
+  <button mat-button (click)="dialogRef.close()">Отмена</button>
+</div>
+

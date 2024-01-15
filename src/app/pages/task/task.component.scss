@@ -1,0 +1,109 @@
+/* Стили для обертки компонента */
+app-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Стили для заголовка задачи */
+  h1 {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  /* Стили для описания задачи */
+  p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  /* Стили для отображения вложений */
+  .attachment {
+    margin-top: 20px;
+  }
+  
+  .attachment img {
+    width: 250px;
+    height: 170px;
+    margin: 10px;
+  }
+  
+  /* Стили для отображения комментариев */
+  .comment {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+   
+  
+  .comment p {
+    margin: 0;
+  }
+  
+
+  
+  /* Стили для формы добавления комментария */
+  .comment-form {
+    margin-top: 20px;
+  }
+  
+  .comment-form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .comment-form button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+
+.delete-button {
+    margin-left: 15px;
+  background-color: #ff0000; /* Красная */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cancel-button {
+    margin-left: 15px;
+  background-color: #00a1ff; /* Голубая */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Стили для textarea при редактировании */
+.comment-textarea {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  resize: vertical; /* Разрешить изменение размера вертикально */
+}
+
+  /* Стили для кнопок редактирования, сохранения и удаления */
+  .edit-button,
+  .save-button {
+      margin-left: 15px;
+    background-color: #007bff; /* Сделайте синими */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+
+  

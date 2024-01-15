@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,31 +9,31 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./my-toolbar.component.scss']
 })
 export class MyToolbarComponent {
-  user!:string | null | undefined;
+  userName!: string;
+  userSubscription!: Subscription;
 
-  constructor(private router: Router,
-    private authService: AuthService){
+  constructor(private router: Router, private authService: AuthService) {
+    this.userSubscription = this.authService.user.subscribe(user => {
+      this.userName = user?.username;
+    });
+  }
 
-      
-    }
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
 
-    ngAfterViewInit(){
-      this.user = localStorage.getItem('user');
-      this.user = this.user?.slice(1, -1);
-      console.log(this.user);
-    }
-
-
-
-  goToProfile(){
+  goToProfile() {
     this.router.navigate(['/dashboard/user']);
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    this.authService.saveUser({});
     this.router.navigate(['/login']);
   }
-  goToDashBoard(){
+
+  goToDashBoard() {
     this.router.navigate(['/dashboard']);
   }
 }

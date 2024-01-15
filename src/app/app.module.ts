@@ -24,6 +24,13 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
+import { EditUserDialogComponent } from './pages/edit/edit-user-dialog/edit-user-dialog.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskCreateDialogComponent } from './pages/task-create-dialog/task-create-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -36,6 +43,9 @@ import {FormsModule} from '@angular/forms';
     UserComponent,
     TeamComponent,
     TaskComponent,
+    EditUserDialogComponent,
+    TaskListComponent,
+    TaskCreateDialogComponent,
     
     
   ],
@@ -53,8 +63,11 @@ import {FormsModule} from '@angular/forms';
     MatToolbarModule,
     MatMenuModule,
     MatCardModule,
-    
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatInputModule,
+    MatDialogModule
+  
     
     
   ],

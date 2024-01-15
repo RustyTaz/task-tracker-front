@@ -1,1 +1,29 @@
-<p>task works!</p>
+<div *ngIf="task" class="task">
+    <h1>Task</h1>
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>Priority: {{ task.priority }}</p>
+    <p>Status: {{ task.status }}</p>
+  
+    <!-- Отображение вложений -->
+    <div *ngFor="let attachment of attachments" class="attachment">
+      <img [src]="attachment.fileUrl" alt="{{attachment.fileName}}" width="250" height="170">
+    </div>
+  
+    <!-- Отображение комментариев -->
+    <div *ngFor="let comment of comments" class="comment">
+      <p *ngIf="editCommentId !== comment.id">{{ comment.text }}</p>
+      <textarea *ngIf="editCommentId === comment.id" [(ngModel)]="comment.text" class="comment-textarea"></textarea>
+      <button *ngIf="canEditOrDeleteComment(comment.userId) && editCommentId !== comment.id" (click)="editComment(comment.id)" class="edit-button">Редактировать</button>
+      <button *ngIf="editCommentId === comment.id" (click)="saveEditedComment(comment.id)" class="save-button">Сохранить</button>
+      <button *ngIf="editCommentId === comment.id" (click)="cancelEditComment()" class="cancel-button">Отменить</button>
+      <button *ngIf="canEditOrDeleteComment(comment.userId) && editCommentId !== comment.id" (click)="deleteComment(comment.id)" class="delete-button">Удалить</button>
+    </div>
+  
+    <!-- Форма добавления комментария -->
+    <div class="comment-form">
+      <input [(ngModel)]="newCommentText" type="text">
+      <button (click)="addComment()" class="add-comment-button">Добавить комментарий</button>
+    </div>
+  </div>
+  

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth'; // Замените на URL вашего API
-  public user:any;
+  private userSubject$ = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user') || '{}'));
+  public user = this.userSubject$.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -24,12 +25,15 @@ export class AuthService {
   }
 
   saveUser(user: any): void {
-    this.user = user;
+    this.userSubject$.next(user);
     console.log(this.user);
-    localStorage.setItem('user', JSON.stringify(user.username));
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   getUser(){
-    return this.user;
+    return this.userSubject$.value;
+  }
+  updateUserSubject(user: any) {
+    this.userSubject$.next(user);
   }
 }

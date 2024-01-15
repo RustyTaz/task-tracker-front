@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 import { TeamService } from 'src/app/services/team.service';
+import { TaskCreateDialogComponent } from '../task-create-dialog/task-create-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -14,7 +17,7 @@ export class DashboardContentComponent {
   filteredTeams: any[] = [];
   selectedPriority = 'ALL';
 
-  constructor(private taskService: TaskService, private teamService: TeamService) {}
+  constructor(private taskService: TaskService, private teamService: TeamService, private router: Router, private dialog: MatDialog) {}
   ngOnInit() {
     this.loadTasks();
     this.loadTeams();
@@ -23,14 +26,14 @@ export class DashboardContentComponent {
   loadTasks() {
     this.taskService.getAllTasks().subscribe(data => {
       this.tasks = data;
-      this.filteredTasks = [...data]; // Инициализация копией массива задач
+      this.filteredTasks = [...data]; 
     });
   }
   
   loadTeams() {
     this.teamService.getAllTeams().subscribe(data => {
       this.teams = data;
-      this.filteredTeams = [...data]; // Инициализация копией массива команд
+      this.filteredTeams = [...data]; 
     });
   }
   
@@ -51,21 +54,24 @@ export class DashboardContentComponent {
     }
   }
 
-  getPriorityColor(priority: string) {
-    switch (priority) {
-      case 'HIGH': return 'red';
-      case 'MEDIUM': return '#d3be06';
-      case 'LOW': return 'blue';
-      default: return 'black';
-    }
+
+  goToTeam(teamId: number) {
+    this.router.navigate(['dashboard/team', teamId]);
   }
 
-  getStatusIcon(status: string) {
-    switch (status) {
-      case 'OPEN': return 'alarm_on';
-      case 'IN_PROGRESS': return 'play_circle_filled';
-      case 'COMPLETED': return 'done';
-      default: return 'help_outline';
-    }
+  openCreateTaskDialog(): void {
+    const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
+      width: '400px',
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.taskService.createTask(result).subscribe(newTask => {
+          this.tasks.push(newTask);
+          this.filterTasks();
+        });
+      }
+    });
   }
+  
 }

@@ -1,25 +1,25 @@
-.dashboard-content {
-    display: flex;
-    justify-content: space-around;
+
     
-    .task-list, .team-list {
-      width: 50%;
-      margin-left: 10px;
+    .task-list{
+        width: 1;
+        margin-left: 10px;
       width: 45%;
     }
-    .team-list{
-      width: 600px;
-    }
   
-    .team-card {
+    .task-card  {
         margin-left: 35px;
       display: flex;
       flex-direction: row;
       align-items: center;
       margin-bottom: 10px;
     }
-
-  }
+  
+    .task-card {
+      .open { color: #f44336; } // красный
+      .in-progress { color: #d3be06; } // желтый
+      .completed { color: #4caf50; } // зеленый
+    }
+ 
 
   select {
     padding: 8px;

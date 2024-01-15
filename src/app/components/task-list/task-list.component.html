@@ -1,0 +1,19 @@
+<div class="task-list">
+    
+        <label for="priority-filter">Фильтр по приоритету</label>
+        <select id="priority-filter" [(ngModel)]="selectedPriority" (change)="filterTasks()">
+          <option value="ALL">Показать все</option>
+          <option value="HIGH">Высокий</option>
+          <option value="MEDIUM">Средний</option>
+          <option value="LOW">Низкий</option>
+        </select>
+        
+      <mat-card *ngFor="let task of filteredTasks " class="task-card" (click)="goToTask(task.id)">
+        <p [ngStyle]="{'color': getPriorityColor(task.priority)}">{{ task.priority }} </p>
+        <span>{{ task.title }} - </span>
+        <mat-icon [ngClass]="{'open': task.status === 'OPEN', 'in-progress': task.status === 'IN_PROGRESS', 'completed': task.status === 'COMPLETED'}">
+          {{ getStatusIcon(task.status) }}
+        </mat-icon>
+        
+      </mat-card>
+    </div>
